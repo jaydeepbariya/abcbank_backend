@@ -16,4 +16,5 @@ public class UserAuthDTO {
 
     @NotBlank(message = "Role is required")
     private String role;
+
 }

@@ -12,4 +12,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
     List<Transaction> findByAccountIdOrderByTimestampDesc(Long accountId);
     List<Transaction> findByAccountIdAndTransactionType(Long accountId, String transactionType);
+    List<Transaction> findByAccountId(Long accountId);
+    List<Transaction> findByLoanId(Long loanId);
 }

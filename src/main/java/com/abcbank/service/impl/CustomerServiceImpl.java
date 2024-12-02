@@ -34,25 +34,6 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO getCustomerByUsername(String username) {
-        Customer customer = customerRepository.findByUsername(username)
-                .orElseThrow(() -> new CustomerException("Customer not found with username: " + username));
-        return mapToDTO(customer);
-    }
-
-    @Override
-    public void updateCustomer(Long id, CustomerDTO customerDTO) {
-        Customer customer = customerRepository.findById(id)
-                .orElseThrow(() -> new CustomerException("Customer not found with ID: " + id));
-
-        customer.setName(customerDTO.getName());
-        customer.setEmail(customerDTO.getEmail());
-        customer.setPhone(customerDTO.getPhone());
-
-        customerRepository.save(customer);
-    }
-
-    @Override
     public void deleteCustomer(Long id) {
         if (!customerRepository.existsById(id)) {
             throw new CustomerException("Customer not found with ID: " + id);
@@ -92,9 +73,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     private CustomerDTO mapToDTO(Customer customer) {
         return new CustomerDTO(
-                customer.getName(),
-                customer.getEmail(),
-                customer.getPhone()
+                customer.getId(),
+                customer.getUser(),
+                customer.getAccounts()
         );
     }
 }

@@ -22,13 +22,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserAuthDTO getUserByUsername(String username) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserAuthException("User not found with username: " + username));
-        return mapToDTO(user);
-    }
-
-    @Override
     public UserAuthDTO getUserById(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserAuthException("User not found with ID: " + id));
@@ -41,7 +34,7 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new UserAuthException("User not found with ID: " + id));
 
         // Update user details
-        user.setUsername(userDTO.getUsername());
+        user.setEmail(userDTO.getEmail());
         user.setRole(userDTO.getRole().toUpperCase());
 
         return this.mapToDTO(userRepository.save(user));
@@ -64,6 +57,6 @@ public class UserServiceImpl implements UserService {
     }
 
     private UserAuthDTO mapToDTO(User user) {
-        return new UserAuthDTO(user.getUsername(), user.getPassword(), user.getRole());
+        return new UserAuthDTO(user.getEmail(), user.getPassword(), user.getRole());
     }
 }

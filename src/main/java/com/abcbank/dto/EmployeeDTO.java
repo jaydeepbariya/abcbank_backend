@@ -12,6 +12,4 @@ public class EmployeeDTO {
     @NotBlank(message = "Designation is required")
     private String designation;
 
-    @NotBlank(message = "Permissions are required")
-    private String permissions;
 }

@@ -18,6 +18,5 @@ public interface LoanService {
 
     void repayLoan(Long loanId, Double amount);
 
-    List<TransactionDTO> getTransactionsByLoanId(Long loanId);
 }
 

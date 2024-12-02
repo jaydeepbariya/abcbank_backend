@@ -17,7 +17,7 @@ public class Transaction {
     private Long id;
 
     @Column(nullable = false)
-    private String transactionType; // Example: "DEPOSIT", "WITHDRAWAL"
+    private String transactionType;
 
     @Column(nullable = false)
     private Double amount;

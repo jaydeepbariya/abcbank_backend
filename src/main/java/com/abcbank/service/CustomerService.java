@@ -9,10 +9,6 @@ public interface CustomerService {
 
     CustomerDTO getCustomerById(Long id);
 
-    CustomerDTO getCustomerByUsername(String username);
-
-    void updateCustomer(Long id, CustomerDTO customerDTO);
-
     void deleteCustomer(Long id);
 
     List<CustomerDTO> getAllCustomers();

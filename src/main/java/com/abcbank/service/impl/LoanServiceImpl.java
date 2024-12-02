@@ -99,18 +99,6 @@ public class LoanServiceImpl implements LoanService {
         transactionRepository.save(transaction);
     }
 
-    @Override
-    public List<TransactionDTO> getTransactionsByLoanId(Long loanId) {
-        List<Transaction> transactions = transactionRepository.findByLoanId(loanId);
-
-        return transactions.stream()
-                .map(transaction -> new TransactionDTO(
-                        transaction.getTransactionType(),
-                        transaction.getAmount(),
-                        transaction.getTimestamp()))
-                .collect(Collectors.toList());
-    }
-
     private LoanDTO mapToDTO(Loan loan) {
         return new LoanDTO(
                 loan.getLoanAmount(),

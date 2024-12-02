@@ -40,14 +40,6 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<TransactionDTO> getTransactionsByLoanId(Long loanId) {
-        List<Transaction> transactions = transactionRepository.findByLoanId(loanId);
-        return transactions.stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public void createTransaction(Long loanId, TransactionDTO transactionDTO) {
         Loan loan = loanRepository.findById(loanId)
                 .orElseThrow(() -> new TransactionException("Loan not found with ID: " + loanId));

@@ -34,19 +34,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeeDTO getEmployeeByUsername(String username) {
-        Employee employee = employeeRepository.findByUsername(username)
-                .orElseThrow(() -> new EmployeeException("Employee not found with username: " + username));
-        return mapToDTO(employee);
-    }
-
-    @Override
     public void updateEmployee(Long id, EmployeeDTO employeeDTO) {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EmployeeException("Employee not found with ID: " + id));
 
         employee.setDesignation(employeeDTO.getDesignation());
-        employee.setPermissions(employeeDTO.getPermissions());
 
         employeeRepository.save(employee);
     }
@@ -77,8 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeDTO mapToDTO(Employee employee) {
         return new EmployeeDTO(
-                employee.getDesignation(),
-                employee.getPermissions()
+                employee.getDesignation()
         );
     }
 }

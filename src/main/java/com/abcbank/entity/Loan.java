@@ -21,10 +21,10 @@ public class Loan {
     private Double interestRate;
 
     @Column(nullable = false)
-    private Integer durationMonths; // Duration in months
+    private Integer durationMonths;
 
     @Column(nullable = false)
-    private String status; // Example: "PENDING", "APPROVED", "REJECTED"
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)

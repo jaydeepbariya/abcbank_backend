@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface UserService {
 
-    UserAuthDTO getUserByUsername(String username);
-
     UserAuthDTO getUserById(Long id);
 
     UserAuthDTO updateUser(Long id, UserAuthDTO userDTO);

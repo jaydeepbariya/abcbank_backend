@@ -10,8 +10,6 @@ public interface TransactionService {
 
     List<TransactionDTO> getAllTransactions();
 
-    List<TransactionDTO> getTransactionsByLoanId(Long loanId);
-
     void createTransaction(Long loanId, TransactionDTO transactionDTO);
 }
 
